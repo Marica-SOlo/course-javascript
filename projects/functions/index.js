@@ -26,6 +26,24 @@ function returnFirstArgument(value) {
  */
 /*
      var summa = function (a,b) {
+=======
+ function returnFirstArgument(value) {
+    return value;
+  }
+  
+  /*
+   Задание 2:
+   2.1: Функция должна возвращать сумму переданных аргументов
+   Пример:
+     sumWithDefaults(10, 20) вернет 30
+     sumWithDefaults(2, 4) вернет 6
+*/
+/*
+     var sum =(a,b) => a + b
+  */
+/* 
+     var sum = function (a,b) {
+
       return a + b;
      }
 
@@ -40,16 +58,32 @@ function sumWithDefaults(a, b = 100) {
 }
 
 /*
+
+  function sumWithDefaults(a, b = 100) {
+    return a + b;
+  }
+
+  
+  /*
+
    Задание 3:
    Функция должна принимать другую функцию и возвращать результат вызова этой функции
    Пример:
      returnFnResult(() => 'привет') вернет 'привет'
    */
+
 function returnFnResult(fn) {
   return fn();
 }
 
 /*
+
+  function returnFnResult(fn) {
+    return fn();
+  }
+  
+  /*
+
    Задание 4:
    Функция должна принимать число (если ничего не передано, то воспринимать как 0) и возвращать новую функцию (F)
    При вызове функции F, переданное ранее число должно быть увеличено на единицу и возвращено из F
@@ -71,6 +105,16 @@ function returnCounter(number = 0) {
 }
 
 /*
+
+  /*
+  function returnCounter(number = 0) {
+    return function (a) {
+      return ++number;
+    };
+  }
+  */
+/*
+
  function returnCounter(number= 0 ){
    while (number>=0) {
   number+= 1 ; 
@@ -83,11 +127,19 @@ function returnCounter(number = 0) {
    Пример:
      returnArgumentsArray(1, 2, 3) вернет [1, 2, 3]
    */
+
 function returnArgumentsArray(...args) {
   return args;
 }
 
 /*
+
+  function returnArgumentsArray(...args) {
+    return args;
+  }
+  
+  /*
+
    Задание 6 *:
    Функция должна принимать другую функцию (F) и некоторое количество дополнительных аргументов
    Функция должна привязать переданные аргументы к функции F и вернуть получившуюся функцию
@@ -98,6 +150,7 @@ function returnArgumentsArray(...args) {
      var newSum = bindFunction(sum, 2, 4);
      console.log(newSum()) выведет 6
    */
+
 function bindFunction(fn, ...args) {
   return fn.bind(null, ...args);
 }
