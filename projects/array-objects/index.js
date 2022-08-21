@@ -1,5 +1,3 @@
-/* ДЗ 2 - работа с массивами и объектами */
-
 /*
  Задание 1:
 
@@ -8,8 +6,15 @@
 
  Пример:
    forEach([1, 2, 3], (el) => console.log(el))
- */
-function forEach(array, fn) {}
+ 
+
+
+function forEach(array, fn) {
+  for( var i = 0; i < array; i++) {
+    fn(array[i], i, array);
+  }
+}
+
 
 /*
  Задание 2:
@@ -19,8 +24,20 @@ function forEach(array, fn) {}
 
  Пример:
    map([1, 2, 3], (el) => el ** 2) // [1, 4, 9]
- */
-function map(array, fn) {}
+ 
+function map(array, fn) {
+  const modif = [];
+  for (var i = 0; i < array.length; i++) {
+  modif.push.fn(array[i], i, array) ;
+  }
+  return modif;
+  }
+  
+
+/*
+
+  }
+};
 
 /*
  Задание 3:
@@ -30,8 +47,16 @@ function map(array, fn) {}
 
  Пример:
    reduce([1, 2, 3], (all, current) => all + current) // 6
- */
-function reduce(array, fn, initial) {}
+ 
+function reduce(array, fn, initial) {
+ const firstInitial = typeof initial != "underfind";
+var prev = firstInitial ? initial : array[0];
+
+for (var i = firstInitial ? 0:1;  i< array.length; i++) {
+  return fn(prev, array, i, array[i]);
+}
+return prev;
+}
 
 /*
  Задание 4:
@@ -40,10 +65,29 @@ function reduce(array, fn, initial) {}
 
  Пример:
    upperProps({ name: 'Сергей', lastName: 'Петров' }) вернет ['NAME', 'LASTNAME']
- */
-function upperProps(obj) {}
+
+   
+   function upperProps(obj) {
+    const people = [];
+    for (const name in obj) {
+      people.push(name.toUpperCase());
+    }
+    return people;
+  
+  };
+
+  /*
+function upperProps(obj) {
+var people = [];
+for (var i = 0; i < obj.lenght; i++ ) {
+   people.push(obj[i].name.toUpperCase);
+}
+return people
+};
+console.log(people);
 
 /*
+
  Задание 5 *:
 
  Функция принимает объект и должна вернуть Proxy для этого объекта
@@ -53,7 +97,19 @@ function upperProps(obj) {}
    const obj = createProxy({});
    obj.foo = 2;
    console.log(obj.foo); // 4
- */
-function createProxy(obj) {}
+ 
 
-export { forEach, map, reduce, upperProps, createProxy };
+
+function  createProxy(obj) {
+ return new Proxy(obj, {
+  set:function (pas, keys, vallue) {
+    pas[keys]= vallue * vallue;
+    return true;
+  },
+ 
+ });
+return proxy;
+}
+
+/*
+export { forEach, map, reduce} */
