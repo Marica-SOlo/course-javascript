@@ -8,13 +8,13 @@
    forEach([1, 2, 3], (el) => console.log(el))
  
 
+*/
 
 function forEach(array, fn) {
-  for( var i = 0; i < array; i++) {
+  for (let i = 0; i < array.length; i++) {
     fn(array[i], i, array);
   }
 }
-
 
 /*
  Задание 2:
@@ -24,20 +24,17 @@ function forEach(array, fn) {
 
  Пример:
    map([1, 2, 3], (el) => el ** 2) // [1, 4, 9]
- 
+   */
+
 function map(array, fn) {
   const modif = [];
-  for (var i = 0; i < array.length; i++) {
-  modif.push.fn(array[i], i, array) ;
+
+  for (let i = 0; i < array.length; i++) {
+    modif[i] = fn(array[i], i, array);
   }
+
   return modif;
-  }
-  
-
-/*
-
-  }
-};
+}
 
 /*
  Задание 3:
@@ -48,14 +45,15 @@ function map(array, fn) {
  Пример:
    reduce([1, 2, 3], (all, current) => all + current) // 6
  
-function reduce(array, fn, initial) {
- const firstInitial = typeof initial != "underfind";
-var prev = firstInitial ? initial : array[0];
+   */
 
-for (var i = firstInitial ? 0:1;  i< array.length; i++) {
-  return fn(prev, array, i, array[i]);
-}
-return prev;
+function reduce(array, fn, initial) {
+  const firstInitial = typeof initial !== 'undefined';
+  let prev = firstInitial ? initial : array[0];
+  for (let i = firstInitial ? 0 : 1; i < array.length; i++) {
+    prev = fn(prev, array[i], i, array);
+  }
+  return prev;
 }
 
 /*
@@ -66,17 +64,17 @@ return prev;
  Пример:
    upperProps({ name: 'Сергей', lastName: 'Петров' }) вернет ['NAME', 'LASTNAME']
 
-   
-   function upperProps(obj) {
-    const people = [];
-    for (const name in obj) {
-      people.push(name.toUpperCase());
-    }
-    return people;
-  
-  };
+   */
 
-  /*
+function upperProps(obj) {
+  const people = [];
+  for (const name in obj) {
+    people.push(name.toUpperCase());
+  }
+  return people;
+}
+
+/*
 function upperProps(obj) {
 var people = [];
 for (var i = 0; i < obj.lenght; i++ ) {
@@ -99,17 +97,15 @@ console.log(people);
    console.log(obj.foo); // 4
  
 
+/*/
 
-function  createProxy(obj) {
- return new Proxy(obj, {
-  set:function (pas, keys, vallue) {
-    pas[keys]= vallue * vallue;
-    return true;
-  },
- 
- });
-return proxy;
+function createProxy(obj) {
+  return new Proxy(obj, {
+    set: function (pas, keys, vallue) {
+      pas[keys] = vallue * vallue;
+      return true;
+    },
+  });
 }
 
-/*
-export { forEach, map, reduce} */
+export { forEach, map, reduce, upperProps, createProxy };
